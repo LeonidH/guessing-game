@@ -7,11 +7,20 @@ class GuessingGame {
 
     /*set the range*/
     setRange(min, max) {
+
+        if (min > max) {
+            /*****swap*****/
+            min = min ^ max;
+            max = min ^ max;
+            min = min ^ max;
+            /**************/
+        }
+
         this._min = min;
         this._max = max;
     }
 
-    /*mid-range (or suggestion)*/
+    /*mid-range (suggestion)*/
     guess() {
         this._current = Math.round(this._min + (this._max - this._min) / 2);
         return this._current;
